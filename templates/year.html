@@ -1,0 +1,39 @@
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <title>Life Expectancy in North America - {{ year }}</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Life Expectancy in North America - {{ year }}</h1>
+  <div id="north_america">
+    {% include 'north_america.svg' %}
+  </div>
+  <script>
+    var canada=document.getElementsByClassName("Canada")
+    var us=document.getElementsByClassName("US")
+    var mexico=document.getElementsByClassName("Mexico")
+
+    for (var i=0; i<canada.length; i++){
+     canada[i].style.fill= "hsl(300,80%,{{100-canada_value}}%)"
+    }
+    for (var i=0; i<us.length; i++){
+     us[i].style.fill= "hsl(300,80%,{{100-usa_value}}%)"
+    }
+    for (var i=0; i<mexico.length; i++){
+     mexico[i].style.fill= "hsl(300,80%,{{100-mexico_value}}%)"
+    }
+  </script>
+
+  <div class="data-display">
+    <p>In {{ year }}, the average life expectancy in the US was {{ usa_value }}, in Canada it was {{ canada_value }}, and in Mexico it was {{ mexico_value }}</p>
+  </div>
+
+  <footer>
+    All data from <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=MX-US-CA"> The World Bank</a>.
+  </footer>
+
+</body>
+</html>

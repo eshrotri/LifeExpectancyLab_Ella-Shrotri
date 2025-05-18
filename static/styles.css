@@ -1,0 +1,54 @@
+body{
+  background-color: #e17cf3;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 12;
+  font-style: normal;
+}
+
+#line_us{
+  stroke:red;
+  stroke-width: 2px;
+}
+
+#line_us:hover{
+  stroke: lightcoral;
+  stroke-width: 2px; 
+}
+
+#line_cana{
+  stroke: blue;
+  stroke-width: 2px;
+}
+
+#line_cana:hover{
+  stroke: lightblue;
+  stroke-width: 2px; 
+}
+
+#line_mex{
+  stroke: green;
+  stroke-width: 2px; 
+}
+
+#line_mex:hover{
+  stroke: lightgreen;
+  stroke-width: 2px; 
+}
+
+#line_avg{
+  stroke: grey;
+  stroke-width: 2px; 
+  border-style: dashed;
+}
+
+#line_avg:hover{
+  stroke: rgb(188, 180, 180);
+  stroke-width: 2px; 
+  border-style: dashed;
+}
+
+svg{
+  border-style: solid;
+  border-width: 1px;
+}

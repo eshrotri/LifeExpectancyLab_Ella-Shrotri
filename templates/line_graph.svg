@@ -1,0 +1,54 @@
+<!--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+     {% for point in endpoints %}
+    <line class="line" x1="{{60+loop.index0*90}}" y1="{{180-point[0]}}" x2="{{60+(loop.index0+1)*90}}" y2="{{180-point[1]}}" stroke-linecap="round"/>
+     {% endfor %}
+
+    <line class="axis" x1="10" y1="150" x2="375" y2="150" />
+
+     {% for year in years %}
+          <text class="label" x="{{60+loop.index0*90}}" y="170">{{year}}</text>
+     {% endfor %}
+     text x="250" y="250" text-anchor="middle">Insert your line graph here</text
+
+</svg> -->
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="500" height="500">
+<g id = "line_us">
+{% for point in usa_endpoints %}
+ <line x1="{{60 + loop.index0 * 7}}" y1="{{450 - ((point[0] - 55) * (400 / 30))}}" x2="{{60 + (loop.index0 + 1) * 7}}" y2="{{450 - ((point[1] - 55) * (400 / 30))}}" />
+{% endfor %}
+</g>
+
+<g id = "line_cana">
+{% for point in canada_endpoints %}
+ <line x1="{{60 + loop.index0 * 7}}" y1="{{450 - ((point[0] - 55) * (400 / 30))}}" x2="{{60 + (loop.index0 + 1) * 7}}" y2="{{450 - ((point[1] - 55) * (400 / 30))}}"/>
+{% endfor %}
+</g>
+
+<g id = "line_mex">
+{% for point in mexico_endpoints %}
+ <line line_mex x1="{{60 + loop.index0 * 7}}" y1="{{450 - ((point[0] - 55) * (400 / 30))}}" x2="{{60 + (loop.index0 + 1) * 7}}" y2="{{450 - ((point[1] - 55) * (400 / 30))}}"/>
+{% endfor %}
+</g>
+
+<g id = "line_avg">
+{% for point in avgendpoints %}
+ <line line_avg x1="{{60 + loop.index0 * 7}}" y1="{{450 - (( point[0] - 55) * (400 / 30))}}" x2="{{60 + (loop.index0 + 1) * 7}}" y2="{{450 - ((point[1] - 55) * (400 / 30))}}"/>
+{% endfor %}
+</g>
+
+<line class="axis" x1="30" y1="450" x2="510" y2="450" stroke="black"/>
+<line class="axis" x1="60" y1="50" x2="60" y2="450" stroke="black" />
+
+{% for year_label in years %}
+ {% if (year_label|int) % 10 == 0 %}
+  <text class="label" x="{{ 50 + loop.index0 * 7 }}" y="465" font-size="15">{{ year_label }}</text>
+ {% endif %}
+{% endfor %}
+
+{% for val in range(55, 90, 5) %}
+{% set y = 450 - ((val - 55) * (400 / 35)) %}
+<line x1="55" x2="60" y1="{{ y-20 }}" y2="{{ y-20 }}" stroke="black" />
+<text x="50" y="{{ y -15}}" font-size="15" text-anchor="end">{{ val }}</text>
+{% endfor %}
+</svg>
