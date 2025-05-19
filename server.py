@@ -19,6 +19,7 @@ def index():
     usa_endpoints = []
     canada_endpoints = []
     mexico_endpoints = []
+    avg_endpoints = []
 
     years = sorted([int(y) for y in data["USA"].keys()])
 
@@ -38,11 +39,15 @@ def index():
         mexico_y2 = float(data["Mexico"][year2])
         mexico_endpoints.append([mexico_y1, mexico_y2])
 
+        avg_y1 = (mexico_y1 + usa_y1 + canada_y1)/3
+        avg_y2 = (mexico_y2 + usa_y2 + canada_y2)/3
+        avg_endpoints.append([avg_y1, avg_y2])
     return render_template(
     "index.html",
     usa_endpoints=usa_endpoints,
     canada_endpoints=canada_endpoints,
     mexico_endpoints=mexico_endpoints,
+    avg_endpoints = avg_endpoints,
     years=years
     )
     print (data)

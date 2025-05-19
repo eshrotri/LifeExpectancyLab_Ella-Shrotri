@@ -39,13 +39,14 @@ body{
 #line_avg{
   stroke: grey;
   stroke-width: 2px; 
-  border-style: dashed;
+  stroke-dasharray:2.5
 }
 
 #line_avg:hover{
   stroke: rgb(188, 180, 180);
   stroke-width: 2px; 
-  border-style: dashed;
+  stroke-dasharray:2.5
+
 }
 
 svg{

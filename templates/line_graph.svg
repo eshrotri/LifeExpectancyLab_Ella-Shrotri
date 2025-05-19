@@ -32,7 +32,7 @@
 </g>
 
 <g id = "line_avg">
-{% for point in avgendpoints %}
+{% for point in avg_endpoints %}
  <line line_avg x1="{{60 + loop.index0 * 7}}" y1="{{450 - (( point[0] - 55) * (400 / 30))}}" x2="{{60 + (loop.index0 + 1) * 7}}" y2="{{450 - ((point[1] - 55) * (400 / 30))}}"/>
 {% endfor %}
 </g>
