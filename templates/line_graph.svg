@@ -13,6 +13,7 @@
 </svg> -->
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="500" height="500">
+<text class ="title" x = "80" y = "45">Average Life Expectancy in North America From 1960-2022
 <g id = "line_us">
 {% for point in usa_endpoints %}
  <line x1="{{60 + loop.index0 * 7}}" y1="{{450 - ((point[0] - 55) * (400 / 30))}}" x2="{{60 + (loop.index0 + 1) * 7}}" y2="{{450 - ((point[1] - 55) * (400 / 30))}}" />
