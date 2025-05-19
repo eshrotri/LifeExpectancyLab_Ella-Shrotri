@@ -2,8 +2,8 @@
 <svg width="200" height="250">
   <defs>
     <linearGradient id="lifeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="hsl(300, 80%, {{ 18 }}%)" />
-      <stop offset="100%" stop-color="hsl(300, 80%, {{ 45 }}%)" />
+      <stop offset="0%" stop-color="hsl(310, 80%, {{ 18 }}%)" />
+      <stop offset="100%" stop-color="hsl(310, 80%, {{ 45 }}%)" />
     </linearGradient>
   </defs>
 
