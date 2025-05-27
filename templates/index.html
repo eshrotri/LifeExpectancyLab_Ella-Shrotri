@@ -1,37 +1,41 @@
-<html>
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-  <title>Life Expectancy Lab</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  
-  <h1>Life Expectancy Lab - Ella Shrotri</h1>
-  <div id="line_graph_all">
-    {% include 'line_graph.svg' %}
-  </div>
-  <div>
-    <form action="/year" method="GET">
-      <label for="year_select">Choose a year:</label><br>
-      <select name="year" id="year_select">
-      </select>
-      <script>
-       const select = document.getElementById("year_select");
-       for (let year = 1960; year <= 2020; year++) {
-        const option = document.createElement("option");
-        option.value = year;
-        option.text = year;
-        select.appendChild(option);
-       }
-       </script>
-       <input type="submit" value="Submit">
-      <form>
-  </div>
-  
-  <footer>
-    All data from <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=MX-US-CA"> The World Bank</a>.
-  </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Macro Page{% endblock %}
+{% block content %}
+
+<h1>Macro View</h1>
+<!--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+     {% for point in endpoints %}
+    <line class="line" x1="{{60+loop.index0*90}}" y1="{{180-point[0]}}" x2="{{60+(loop.index0+1)*90}}" y2="{{180-point[1]}}" stroke-linecap="round"/>
+     {% endfor %}
+
+    <line class="axis" x1="10" y1="150" x2="375" y2="150" />
+
+     {% for year in years %}
+          <text class="label" x="{{60+loop.index0*90}}" y="170">{{year}}</text>
+     {% endfor %}
+     text x="250" y="250" text-anchor="middle">Insert your line graph here</text
+
+</svg> -->
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="500" height="500">
+
+    
+    <line class="axis" x1="30" y1="450" x2="510" y2="450" stroke="black"/>
+    <line class="axis" x1="60" y1="50" x2="60" y2="450" stroke="black" />
+    
+    {% for year_label in years %}
+     {% if (year_label|int) % 10 == 0 %}
+      <text class="label" x="{{ 50 + loop.index0 * 7 }}" y="465" font-size="15">{{ year_label }}</text>
+     {% endif %}
+    {% endfor %}
+    
+    {% for val in range(55, 90, 5) %}
+    {% set y = 450 - ((val - 55) * (400 / 35)) %}
+    <line x1="55" x2="60" y1="{{ y-20 }}" y2="{{ y-20 }}" stroke="black" />
+    <text x="50" y="{{ y -15}}" font-size="15" text-anchor="end">{{ val }}</text>
+    {% endfor %}
+    <text class ="title" x = "80" y = "45">Average Children Abused per Borough
+    
+    </svg>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+  <h1>About the Project</h1>
+  <p>This project is meant to show the number of children in an abusive home. The data shows the number of children in reported abusive homes per borough.</p>
+  <h2>Vocabulary</h2>
+  <p>
+    From NYC.gov's Administration for Children Services: The Family Court Act of the state of New York defines child neglect or abuse as the act, or failure to act, by any parent</p>
+  </p>or caretaker that results in the death, serious physical or emotional harm, sexual abuse, or exploitation of a child under the age of 18.</p>
+  <h2>Prototypes</h2>
+  <img class="boroughmap" src="{{ url_for('static', filename='Borough Map.jpg') }}" alt="boroughmap" width="50%" height="50%">
+  <img class="linegraph" src="{{ url_for('static', filename='Line Graph.jpg') }}" alt="linegraph" width="50%" height="50%">
+  
+  
+  <h3>Purpose</h3>
+  <p>The macro view is meant to show a line graph of the the number of independent children who were abused per borough in a certain year along with the total number</p>
+  <p>and the number of children where the location is unkown. This line graph should show how the abuse per borough compares to the other boroughs as well as show how</p>
+  <p> much each borough contributes to the total.The micro page clearly show which borough had the most children who were abused per year, and the borough which had the</p>
+  <p>lowest number through how dark/ light the borough is colored.</p>
+  <h3>Feedback</h3>
+  <p>The feedback I received was that generally it looked really good; however someone said that the navbar should be at the top of the screen. As well the colors should be</p>
+  <p>distinct, which I thought as well, but just couldn't really show on the prototype. Similarly to the colors critique, I received the feedback that if my background is to be</p>
+  <p>purple/ dark pink then my colors on the graph/ map should not be pink which I too agree with. There was a suggestion that instead of having the years be a dropdown in just the</p>
+  <p>map view, to have the tab in the navbar that says micro instead say year and have the dropdown have the different years. Otherwise there weren't that many critiques, except for</p>
+  <p>with the line graph and the scale that I use on the y-axis. </p>
+{% endblock %}
