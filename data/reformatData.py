@@ -1,5 +1,5 @@
 import json
-
+#Hi Mr. Whittenburg, I just wanted to let you know I couldn't add the original data because I had to clean it up before putting it in. Thanks!
 
 f1 = open("data/Abuse_Borough - Sheet1.csv", "r")
 lines = f1.readlines()
