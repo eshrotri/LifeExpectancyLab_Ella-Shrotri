@@ -1,26 +1,43 @@
 {% extends "base.html" %}
-
-{% block title %}Micro Page{% endblock %}
-
+{% block title %}Abuse per Borough – {{ year }}{% endblock %}
 {% block content %}
-  <h1>Micro View</h1>
-{% endblock %}
-<html>
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <title>Abuse per district - {{ year }}</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Abuse per district - {{ year }}</h1>
-  <div id="north_america">
-    {% include 'NYC_boroughs.svg' %}
-  </div>
+
+<h1>Abuse per Borough – {{ year }}</h1>
+
+<div id="nyc-map">
+  {% include 'NYC_boroughs.svg' %}
+</div>
+
+
+{% set min_light = 30 %}
+{% set max_light = 85 %}
+{% set max_val = 22000 %}
+<!--this just gives a scaling system because the numbers are really big-->
+{% set bronx_light = max_light - (bronx_value / max_val) * (max_light - min_light) %}
+{% set brooklyn_light = max_light - (brooklyn_value / max_val) * (max_light - min_light) %}
+{% set manhattan_light = max_light - (manhattan_value / max_val) * (max_light - min_light) %}
+{% set queens_light = max_light - (queens_value / max_val) * (max_light - min_light) %}
+{% set staten_light = max_light - (staten_value / max_val) * (max_light - min_light) %}
+
+<script>
+  const bronx = document.getElementById("bronx");
+  const brooklyn = document.getElementById("brooklyn");
+  const manhattan = document.getElementById("manhattan");
+  const queens = document.getElementById("queens");
+  const staten = document.getElementById("staten");
+
+  bronx.style.setProperty("fill", "hsl(310, 80%, {{ bronx_light }}%)", "important");
+  brooklyn.style.setProperty("fill", "hsl(310, 80%, {{ brooklyn_light }}%)", "important");
+  manhattan.style.setProperty("fill", "hsl(310, 80%, {{ manhattan_light }}%)", "important");
+  queens.style.setProperty("fill", "hsl(310, 80%, {{ queens_light }}%)", "important");
+  staten.style.setProperty("fill", "hsl(310, 80%, {{ staten_light }}%)", "important");
   
-  <div class="data-display"></div>
 
 
-</body>
-</html>
+</script>
+
+<text>The average number of children abused per borough in {{ year }} was {{ average_value }}, in comparison, Manhattan was {{ manhattan_comp }} away from the average, The Bronx was {{ bronx_comp }} away from the average, Staten Island was {{ staten_comp }} away from the average, Queens was {{ queens_comp }} away from the average, and Brooklyn was {{ brooklyn_comp }} away from the average.</text>
+<br>
+{% include 'footer.html' %} 
+
+{% endblock %}

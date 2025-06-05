@@ -15,14 +15,18 @@
   
   
   <h3>Purpose</h3>
-  <p>The macro view is meant to show a line graph of the the number of independent children who were abused per borough in a certain year along with the total number</p>
-  <p>and the number of children where the location is unkown. This line graph should show how the abuse per borough compares to the other boroughs as well as show how</p>
-  <p> much each borough contributes to the total.The micro page clearly show which borough had the most children who were abused per year, and the borough which had the</p>
-  <p>lowest number through how dark/ light the borough is colored.</p>
+  <p>The line graph is meant to show the number of independent children who were abused per borough in a certain year along with the total number and the number of children where the location is unkown. This line graph should show how the abuse per borough compares to the other boroughs as well as show how</p>
+  much each borough contributes to the total. The map is meant to clearly show which borough had the most children who were abused per year, and the borough which had the lowest number through how dark/ light the borough is colored.
   <h3>Feedback</h3>
-  <p>The feedback I received was that generally it looked really good; however someone said that the navbar should be at the top of the screen. As well the colors should be</p>
-  <p>distinct, which I thought as well, but just couldn't really show on the prototype. Similarly to the colors critique, I received the feedback that if my background is to be</p>
-  <p>purple/ dark pink then my colors on the graph/ map should not be pink which I too agree with. There was a suggestion that instead of having the years be a dropdown in just the</p>
-  <p>map view, to have the tab in the navbar that says micro instead say year and have the dropdown have the different years. Otherwise there weren't that many critiques, except for</p>
-  <p>with the line graph and the scale that I use on the y-axis. </p>
-{% endblock %}
+  <p>The feedback I received was that generally it looked really good; however someone said that the navbar should be at the top of the screen. As well the colors should be
+  distinct, which I thought as well, but just couldn't really show on the prototype. Similarly to the colors critique, I received the feedback that if my background is to be
+  purple/ dark pink then my colors on the graph/ map should not be pink which I too agree with. There was a suggestion that instead of having the years be a dropdown in just the
+  map view, to have the tab in the navbar that says the year where I originally was going to do it per borough. The suggestion was to put the year as a dropdown at the top so the viewer could have a full view per borough. Otherwise there weren't that many critiques, except for
+  with the line graph and the scale that I use on the y-axis. </p>
+  <h2>Project Overview Video</h2>
+  <video width="640" controls>
+  <source src="{{ url_for('static', filename='static/Ella Shrotri Data Journalism Video.mp4') }}" type="Video.mp4">
+  </video> 
+  {% include 'footer.html' %} 
+
+  {% endblock %}

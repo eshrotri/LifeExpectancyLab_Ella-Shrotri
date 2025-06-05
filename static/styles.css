@@ -6,47 +6,101 @@ body{
   font-style: normal;
 }
 
-#line_us{
-  stroke:red;
-  stroke-width: 2px;
+#manhattan line {
+  stroke: gold;
 }
 
-#line_us:hover{
-  stroke: lightcoral;
-  stroke-width: 2px; 
+#manhattan circle {
+  fill: gold;
 }
 
-#line_cana{
+#manhattan:hover line {
+  stroke: goldenrod;
+  stroke-width: 4;
+}
+
+#brooklyn line {
+  stroke: teal;
+}
+
+#brooklyn circle {
+  fill: teal;
+}
+
+#brooklyn:hover line {
+  stroke: turquoise;
+  stroke-width: 4;
+}
+
+#the-bronx line {
   stroke: blue;
-  stroke-width: 2px;
 }
 
-#line_cana:hover{
+#the-bronx circle {
+  fill: blue;
+}
+
+#the-bronx:hover line {
   stroke: lightblue;
-  stroke-width: 2px; 
+  stroke-width: 4;
 }
 
-#line_mex{
-  stroke: green;
-  stroke-width: 2px; 
+#staten-island line {
+  stroke: forestgreen;
 }
 
-#line_mex:hover{
-  stroke: lightgreen;
-  stroke-width: 2px; 
+#staten-island circle {
+  fill: forestgreen;
 }
 
-#line_avg{
-  stroke: grey;
-  stroke-width: 2px; 
-  stroke-dasharray:2.5
+#staten-island:hover line {
+  stroke: rgb(122, 192, 122);
+  stroke-width: 4;
 }
 
-#line_avg:hover{
-  stroke: rgb(188, 180, 180);
-  stroke-width: 2px; 
-  stroke-dasharray:2.5
+#queens line {
+  stroke: palevioletred;
+}
 
+#queens circle {
+  fill: palevioletred;
+}
+
+#queens:hover line {
+  stroke: pink;
+  stroke-width: 4;
+}
+
+#total line {
+  stroke: black;
+}
+
+#total circle {
+  fill: black;
+}
+
+#total:hover line {
+  stroke: darkgrey;
+  stroke-width: 4;
+}
+
+#outside line {
+  stroke: yellow;
+}
+
+#outside circle {
+  fill: yellow;
+}
+
+#outside:hover line {
+  stroke: palegoldenrod;
+  stroke-width: 4;
+}
+
+#nyc-map svg {
+  width: 600px;   
+  height: auto;
+  display: block;
 }
 
 svg{

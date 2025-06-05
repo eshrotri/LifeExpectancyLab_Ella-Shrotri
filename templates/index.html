@@ -1,41 +1,79 @@
 {% extends "base.html" %}
-{% block title %}Macro Page{% endblock %}
+{% block title %}All Data{% endblock %}
 {% block content %}
 
-<h1>Macro View</h1>
-<!--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
-     {% for point in endpoints %}
-    <line class="line" x1="{{60+loop.index0*90}}" y1="{{180-point[0]}}" x2="{{60+(loop.index0+1)*90}}" y2="{{180-point[1]}}" stroke-linecap="round"/>
-     {% endfor %}
+<h1>Line graph of abuse through the years</h1>
+<p>This chart shows the number of children in reported abusive homes per borough, across years.</p>
 
-    <line class="axis" x1="10" y1="150" x2="375" y2="150" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="600" height="500">
 
-     {% for year in years %}
-          <text class="label" x="{{60+loop.index0*90}}" y="170">{{year}}</text>
-     {% endfor %}
-     text x="250" y="250" text-anchor="middle">Insert your line graph here</text
+  <line x1="50" y1="450" x2="550" y2="450" stroke="black" />
+  <line x1="50" y1="50" x2="50" y2="450" stroke="black" />
+  <rect x="500" y="20" width="15" height="15" fill="gold" />
+  <text x="520" y="32" font-size="14">Manhattan</text>
+  <rect x="500" y="40" width="15" height="15" fill="teal" />
+  <text x="520" y="52" font-size="14">Brooklyn</text>
+  <rect x="500" y="60" width="15" height="15" fill="blue" />
+  <text x="520" y="72" font-size="14">The Bronx</text>
+  <rect x="500" y="80" width="15" height="15" fill="forestgreen" />
+  <text x="520" y="92" font-size="14">Staten Island</text>
+  <rect x="500" y="100" width="15" height="15" fill="palevioletred" />
+  <text x="520" y="112" font-size="14">Queens</text>
+  <rect x="500" y="120" width="15" height="15" fill="black" />
+  <text x="520" y="132" font-size="14">Total</text>
+  <rect x="500" y="140" width="15" height="15" fill="Yellow" />
+  <text x="520" y="152" font-size="14">Outside</text>
+  {% for year in years %}
+    <text x="{{ 60 + loop.index0 * 90 }}" y="470" font-size="14">{{ year }}</text>
+  {% endfor %}
 
-</svg> -->
+  {% for tick in range(10000, 80000, 10000) %}
+    {% set y = 450 - (tick / 80000 * 400) %}
+    <line x1="45" x2="50" y1="{{ y }}" y2="{{ y }}" stroke="black" />
+    <text x="40" y="{{ y + 5 }}" font-size="12" text-anchor="end">{{ tick }}</text>
+  {% endfor %}
+ 
+  <text x="5" y="240" text-anchor="middle" transform="rotate(-90, 20, 250)" font-size="14">
+    Number of Children
+  </text>
+ 
+  {% for borough, values in boroughs.items() %}
+    {% set idname = borough|lower|replace(' ', '-') %}
+    <g id="{{ idname }}">
+      {% for i in range(years|length - 1) %}
+        {% set x1 = 60 + i * 90 %}
+        {% set y1 = 450 - (values[years[i]] / 80000 * 400) %}
+        {% set x2 = 60 + (i + 1) * 90 %}
+        {% set y2 = 450 - (values[years[i+1]] / 80000 * 400) %}
+        <line x1="{{ x1 }}" y1="{{ y1 }}" x2="{{ x2 }}" y2="{{ y2 }}" stroke-width="2" />
+      {% endfor %}
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="500" height="500">
+      <text x="300" y="490" text-anchor="middle" font-size="14">
+        Year
+      </text>
 
-    
-    <line class="axis" x1="30" y1="450" x2="510" y2="450" stroke="black"/>
-    <line class="axis" x1="60" y1="50" x2="60" y2="450" stroke="black" />
-    
-    {% for year_label in years %}
-     {% if (year_label|int) % 10 == 0 %}
-      <text class="label" x="{{ 50 + loop.index0 * 7 }}" y="465" font-size="15">{{ year_label }}</text>
-     {% endif %}
-    {% endfor %}
-    
-    {% for val in range(55, 90, 5) %}
-    {% set y = 450 - ((val - 55) * (400 / 35)) %}
-    <line x1="55" x2="60" y1="{{ y-20 }}" y2="{{ y-20 }}" stroke="black" />
-    <text x="50" y="{{ y -15}}" font-size="15" text-anchor="end">{{ val }}</text>
-    {% endfor %}
-    <text class ="title" x = "80" y = "45">Average Children Abused per Borough
-    
-    </svg>
+    </g>
+  {% endfor %}
+
+  <text x="300" y="30" text-anchor="middle" font-size="18">
+    Child Abuse Cases per Borough (2019–2023)
+  </text>
+  
+</svg>
+<br>
+<br>
+<h3><text>About the Data</text></h3>
+<text x="300" y="30" text-anchor="middle" font-size="18">
+  The Bronx consistently had the most number of abuses every year where Staten Island and the outside of New York area had the smallest number. Also, the number of children who were abused went down over the years.
+</text>
+<br>
+<br>
+<h3><text>Takeaways</text></h3>
+<text x="300" y="30" text-anchor="middle" font-size="18">
+  If I were to do the project again, I think I might have done a bar chart because I think the line graph gives a false view of the abuse cases over time; having said that, I really do think the line graph gives a good interpretation of the data, but I wish I had more of it (more specifically I wish I had the data for each month). I also think that it is such a serious topic, but the basic format I did it in doesn't really show the extent of how bad the numbers are. So I would try and find a way to make it more clear the extent and severity of the issue. I also didn't realize the sheer amount of children who were abused in NYC. 
+</text>
+<br>
+{% include 'footer.html' %} 
 
 {% endblock %}
+
